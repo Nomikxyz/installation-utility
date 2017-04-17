@@ -103,18 +103,18 @@ class App(object):
             self.changed = False
 
     def install_everything(self):
-	csvfilename = tkSimpleDialog.askstring("Install Command", "Enter your installation list filename") + ".nomcsv"
-    	installist = open(csvfilename)
-    	reader = csv.reader(installist)
+        actualfile = open(str(askopenfilename(title="Open File",filetypes=[('Nomik Install List','.nomcsv')])))
+	reader = csv.reader(actualfile)
     	data = list(reader)
     	lines = len(data)
 	command = tkSimpleDialog.askstring("Install Command", "Enter your installation command here.")
-    	i = 0
+   	i = 0
     	for row in data:
             package = row[0]
             i += 1
             os.system(command+" "+package)
         tkMessageBox.showinfo("Information", "Installation complete")
+	self.master.destroy()
 
     def close_window(self):
         if self.changed:
