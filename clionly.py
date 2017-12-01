@@ -16,17 +16,12 @@ def main():
 
     # Variables for progress counter
     lines = len(data)
-    i = 0
 
     # Analyze data in dataset
     for row in data:
         # Assign image name and state to variables
         package = row[0]
-
-        # Increment i
-        i += 1
-
-        os.system("cpanm "+package)
+        os.system("cpanm "+ package)
 
 # Execute main function if name is equal to main
 if __name__ == '__main__':
